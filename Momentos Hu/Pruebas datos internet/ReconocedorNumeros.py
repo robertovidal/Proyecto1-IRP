@@ -1,3 +1,4 @@
+# Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 from MomentosHu import calcular_momentos_hu
 
 # Esta función devuelve el resultado de la imagen

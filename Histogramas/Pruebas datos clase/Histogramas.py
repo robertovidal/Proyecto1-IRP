@@ -1,3 +1,4 @@
+# Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 import numpy as np
 import os
 import cv2

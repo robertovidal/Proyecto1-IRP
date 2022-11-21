@@ -1,3 +1,4 @@
+# Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 from random import seed
 from random import shuffle
 import time

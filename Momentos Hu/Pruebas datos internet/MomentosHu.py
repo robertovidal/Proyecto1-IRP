@@ -1,3 +1,4 @@
+# Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 import cv2
 import numpy as np
 # En esta función se calculan los mentos de Hu de
