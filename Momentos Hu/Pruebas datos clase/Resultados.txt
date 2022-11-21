@@ -1,0 +1,54 @@
+Predicciones correctas 535
+Predicciones incorrectas 1805
+
+Predicciones segun cada numero:
+
+Numero 0:
+Correctas: 39
+Incorrectas: 195
+Falsos positivos: 6
+
+Numero 1:
+Correctas: 136
+Incorrectas: 98
+Falsos positivos: 291
+
+Numero 2:
+Correctas: 20
+Incorrectas: 214
+Falsos positivos: 104
+
+Numero 3:
+Correctas: 31
+Incorrectas: 203
+Falsos positivos: 134
+
+Numero 4:
+Correctas: 42
+Incorrectas: 192
+Falsos positivos: 195
+
+Numero 5:
+Correctas: 22
+Incorrectas: 212
+Falsos positivos: 129
+
+Numero 6:
+Correctas: 61
+Incorrectas: 173
+Falsos positivos: 262
+
+Numero 7:
+Correctas: 50
+Incorrectas: 184
+Falsos positivos: 305
+
+Numero 8:
+Correctas: 117
+Incorrectas: 117
+Falsos positivos: 312
+
+Numero 9:
+Correctas: 17
+Incorrectas: 217
+Falsos positivos: 67

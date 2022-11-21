@@ -1,0 +1,11 @@
+Opencv
+Se instala con pip:
+pip install opencv-python
+
+EasyOCR
+Se instala con pip:
+pip install easyocr
+
+Numpy
+Se instala con pip:
+pip install numpy
