@@ -1,6 +1,33 @@
 # Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 import numpy as np
-from Histogramas import generarHistograma
+
+def generarHistograma(pixeles, imagen, color):
+  # se divide la cantidad de pixeles entre
+  # porque la cantidad corresponde a un cuadrado
+  # entonces si es 4 debemos hacer cada 2 filas
+  # y cada 2 columnas
+  pixeles = pixeles//2
+  w, h = imagen.shape[:2]
+  matrizHistograma = np.zeros([w//pixeles,h//pixeles], dtype=int)
+
+  for x in range(0,w,pixeles):
+    for y in range(0,h,pixeles):
+      totPixeles = 0
+      # aquí se cuenta la cantidad de pixeles
+      # que corresponden al color que se envía
+      # en el espacio de pixeles determinado
+      for x2 in range(pixeles):
+        for y2 in range(pixeles):
+          if x+x2 < w and y+y2 < h:
+            if np.array_equal(imagen[x+x2][y+y2], color):
+              totPixeles += 1
+      matrizHistograma[x//pixeles][y//pixeles] = totPixeles
+  # numpy permite calcular la suma de columnas o filas
+  # entonces aquí devolvemos el primer array es de las
+  # filas y el segundo de las columnas
+  horizontal = np.sum(matrizHistograma, axis=1)
+  vertical = np.sum(matrizHistograma, axis=0)
+  return np.concatenate((horizontal, vertical))
 
 # Esta función es para crear el modelo, es decir
 # calcular el promedio y las varianzas de los histogramas
