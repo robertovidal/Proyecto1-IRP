@@ -1,7 +1,6 @@
 # Copyright (C) 2022  Jose Blanco, Pablo Fernández, Jose Ocampo, Roberto Vidal
 import cv2
 import easyocr
-import os
 
 img = cv2.imread('digits.png')
 
@@ -23,48 +22,20 @@ for i in range(10):
 
 reader = easyocr.Reader(["es"], gpu=True)
 
+# Como la función para los resultados está en otra carpeta nos cambiamos
+# de esta manera
+import sys
+import os
+actual = os.path.dirname(os.path.realpath(__file__))
+actual = os.path.dirname(actual)
+sys.path.append(actual)
+from Resultados import resultados
+# Se obtienen los resultados
+correctos, incorrectos, correctos_numeros, incorrectos_numeros, falsos_positivos = resultados(especimenes_prueba, reader)
 
-correctos = 0
-incorrectos = 0
-
-correctos_numeros = [0,0,0,0,0,0,0,0,0,0]
-incorrectos_numeros = [0,0,0,0,0,0,0,0,0,0]
-falsos_positivos = [0,0,0,0,0,0,0,0,0,0]
-
-# Se realizan las pruebas con los especímenes de prueba
-# y se calculan cuales fueron predicciones correctas
-# e incorrectas
-for i in range(10):
-    for especimen in especimenes_prueba[i]:
-        resultado = reader.readtext(especimen, paragraph=False)
-        if len(resultado) == 1:
-            try:
-                resultado = int(resultado[0][1])
-                if resultado == i:
-                    correctos+=1
-                    correctos_numeros[i]+=1
-                else:
-                    incorrectos+=1
-                    incorrectos_numeros[i]+=1
-                    falsos_positivos[resultado]+=1
-            except:
-                    incorrectos += 1
-                    incorrectos_numeros[i]+=1
-
-# Se guardan los resultados en un txt
-try:
-    os.remove("Resultados.txt")
-except OSError:
-    pass
-f = open("Resultados.txt", "a")
-f.write("Predicciones correctas "+str(correctos)+"\n")
-f.write("Predicciones incorrectas "+str(incorrectos)+"\n\n")
-f.write("Predicciones segun cada numero:\n")
-
-for i in range(10):
-    f.write("\nNumero "+str(i)+":\n")
-    f.write("Correctas: "+str(correctos_numeros[i]) + "\n")
-    f.write("Incorrectas: "+str(incorrectos_numeros[i])+ "\n")
-    f.write("Falsos positivos: "+str(falsos_positivos[i])+ "\n")
-
-f.close()
+# Aquí también nos cambiamos de carpeta
+actual = os.path.dirname(actual)
+sys.path.append(actual)
+from Guardar import guardar_resultados
+# Se guardan los resultados
+guardar_resultados(correctos, incorrectos, correctos_numeros,incorrectos_numeros,falsos_positivos)
